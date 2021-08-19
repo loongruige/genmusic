@@ -48,4 +48,37 @@ $thumbnail[$userAvatar[$clientid]]
 $footer[$userTag[$clientID];$userAvatar[$clientID]]
 $addTimestamp
 `
+},
+{
+  name: "play",
+  code: `
+$if[$message==]
+Did you mean:
+\`>stop / >pause / >join\`?
+$elseif[$voiceID==]
+You aren't in a voice channel.
+$endelseif
+$elseif[$voiceID[$clientid]==]
+$joinVC[$voiceID]
+$playSong[$message;31d;yes;no;:x: Couldn't play song. Try again later.]
+$endelseif
+$elseif[$voiceID[$clientID]!=$voiceID[$authorID]]
+We aren't at the same voice channel. Please switch to the channel I'm in.
+$endelseif
+$endif
+  
+  
+`
+},
+{
+  name: "join",
+  code: `
+$if[$voiceID[$clientID]!=]
+Failed to join voice channel:
+I am already in a voice channel.
+$else
+$joinVC[$voiceID]
+Joined, hi! :wave:
+$endif
+`
 }]
