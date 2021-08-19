@@ -17,7 +17,7 @@ I am currently in **$serverCount** servers and have **$allMembersCount** members
 $title[Command count : $commandsCount]
 $addfield[Other;\`$getVar[prefix]loop\`, \`$getVar[prefix]7/24\`, \`$getVar[prefix]freemium\`, \`$getvar[prefix]discord\`]
 $addfield[Infos;\`$getVar[prefix]help\`, **\`$getVar[prefix]commands\`**, \`$getVar[prefix]info\`, \`$getVar[prefix]queue\`, \`$getVar[prefix]np\` ]
-$addfield[Start/stop;\`$getVar[prefix]start\`, \`$getVar[prefix]stop\`, \`$getVar[prefix]pause\`, \`$getVar[prefix]resume\`]
+$addfield[Start/stop;\`$getVar[prefix]play\`, \`$getVar[prefix]stop\`, \`$getVar[prefix]pause\`, \`$getVar[prefix]resume\`]
   
 `
 },
