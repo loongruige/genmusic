@@ -6,7 +6,7 @@ prefix: "$getVar[prefix]"
 })
 
 const vars = require("./variables.gen")
-bot.loadCommands("./commands.js")
+bot.loadCommands("./commands/")
 bot.onMessage()
 
 bot.command({
