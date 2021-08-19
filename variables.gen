@@ -1,0 +1,5 @@
+const vars = {
+  test: "pass",
+}
+
+module.exports = vars;
