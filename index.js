@@ -6,9 +6,9 @@ prefix: "$getVar[prefix]"
 })
 
 const vars = require("./variables.gen")
-bot.loadCommands("./commands/")
-bot.onMessage()
 
+bot.onMessage()
+bot.loadCommands("./commands/")
 bot.command({
 name: "ping",
 code: `Pong!
