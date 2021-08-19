@@ -1,5 +1,5 @@
 const vars = {
-  test: "pass",
+  prefix: ">"
 }
 
 module.exports = vars;

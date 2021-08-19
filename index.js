@@ -2,11 +2,11 @@ const aoijs = require("aoi.js")
 
 const bot = new aoijs.Bot({
 token: process.env["Token"],
-prefix: ">"
+prefix: "$getVar[prefix]"
 })
 
 const vars = require("./variables.gen")
-
+bot.loadCommands("./commands.js")
 bot.onMessage()
 
 bot.command({
