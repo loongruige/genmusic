@@ -144,4 +144,42 @@ Resuming!
 $endif
   
 `
+},
+{
+  name: "loop",
+  code: `
+$if[$voiceID==]
+You're not in a voice channel
+$elseif[$voiceID[$clientID]==]
+I'm not in a voice channel.
+$endelseif
+$elseif[$voiceID!=$voiceID[$clientID]]
+We are not in the same voice channel.
+$endelseif
+$elseif[$queuestatus==idle]
+Queue is empty.
+$endelseif
+$elseif[$loopStatus==none]
+Looping 1 song.
+$loopSong
+$endelseif
+$elseif[$loopstatus==song]
+Looping entire queue.
+$loopQueue
+$endelseif
+$elseif[$loopstatus==queue]
+Looping disabled.
+$loopqueue
+$endelseif
+$endif
+
+
+`
+},
+{
+  name: "eval",
+  code: `
+$eval[$message]
+$onlyForIds[553287196875161631;no perm]  
+`
 }]
