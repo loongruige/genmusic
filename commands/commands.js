@@ -107,5 +107,41 @@ $leaveVC
 $endif`
 },
 {
-  name: ""
+  name: "pause",
+  code: `
+$if[$voiceID==]
+You're not in a voice channel
+$elseif[$voiceID!=$voiceID[$clientID]]
+We are not in the same voice channel.
+$endelseif
+$elseif[$queueStatus==idle]
+Nothing's playing.
+$endelseif
+$elseif[$queueStatus==paused]
+Song is already paused.
+$endelseif
+$else
+$pauseSong
+Paused!
+$endif
+  
+`
+},
+{
+  name: "resume",
+  code: `
+$if[$voiceID==]
+You're not in a voice channel
+$elseif[$voiceID!=$voiceID[$clientID]]
+We are not in the same voice channel.
+$endelseif
+$elseif[$queueStatus==playing]
+A song is already playing.
+$endelseif
+$else
+$resumeSong
+Resuming!
+$endif
+  
+`
 }]
