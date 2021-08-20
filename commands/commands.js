@@ -77,9 +77,29 @@ $endif
 $if[$voiceID[$clientID]!=]
 Failed to join voice channel:
 I am already in a voice channel.
+$elseif[$voiceID==]
+You're not in a voice channel.
+$endelseif
 $else
 $joinVC[$voiceID]
 Joined, hi! :wave:
 $endif
 `
+},
+{
+name: "leave",
+code: `$if[$voiceID[$clientID]==]
+Failed to leave voice channel:
+I am not in a voice channel.
+$elseif[$voiceID[$clientID]!=$voiceID[$authorID]]
+We aren't at the same voice channel.
+$endelseif
+$else
+See you next time!
+$leaveVC
+$endif`
+},
+{
+  name:"lazydows",
+  code: `placeholder`
 }]

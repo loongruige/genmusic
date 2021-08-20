@@ -1,5 +1,5 @@
 const aoijs = require("aoi.js")
-
+//helo
 const bot = new aoijs.Bot({
 token: process.env["Token"],
 prefix: "$getVar[prefix]"
