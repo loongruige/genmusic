@@ -59,9 +59,14 @@ $elseif[$voiceID==]
 You aren't in a voice channel.
 $endelseif
 $elseif[$voiceID[$clientid]==]
-
-$playSong[$message;1m;yes;no;:x: Couldn't play song. Try again later.]
+$playSong[$message;7200m;yes;no;:x: Couldn't play song. Try again later.]
 $joinVC[$voiceID]
+$changeNickname[$clientID;GenMusic | 🎶]
+$endelseif
+$elseif[$voiceID[$clientid]==$voiceid]
+$playSong[$message;7200m;yes;no;:x: Couldn't play song. Try again later.]
+$joinVC[$voiceID]
+$changeNickname[$clientID;GenMusic | 🎶]
 $endelseif
 $elseif[$voiceID[$clientID]!=$voiceID[$authorID]]
 We aren't at the same voice channel. Please switch to the channel I'm in.
@@ -83,6 +88,7 @@ $endelseif
 $else
 $joinVC[$voiceID]
 Joined, hi! :wave:
+$changeNickname[$clientID;GenMusic | ⏱️]
 $endif
 `
 },
@@ -96,10 +102,10 @@ We aren't at the same voice channel.
 $endelseif
 $else
 See you next time!
+$changeNickname[$clientID;GenMusic]
 $leaveVC
 $endif`
 },
 {
-  name:"lazydows",
-  code: `placeholder`
+  name: ""
 }]
