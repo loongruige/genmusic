@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "aoi.js": "^4.4.4",
+    "http": "0.0.1-security",
     "opusscript": "0.0.8"
   },
   "devDependencies": {},

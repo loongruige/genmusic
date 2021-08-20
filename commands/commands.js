@@ -182,4 +182,14 @@ $endif
 $eval[$message]
 $onlyForIds[553287196875161631;no perm]  
 `
+},
+{
+  name: "np",
+  code: `
+$sub[100;$round[$multi[$divide[$splitText[1];$splitText[4]];100]]]% complete
+$image
+
+$textSplit[$songInfo[duration_left] $songInfo[duration]; ]
+
+`
 }]
