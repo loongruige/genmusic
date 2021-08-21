@@ -1,5 +1,11 @@
 const vars = {
-  prefix: ">"
+  prefix: ">",
+  seven24Channel: "",
+
+  wallet: 100,
+  bank: 0,
+  randomGB: 215,
+  plays: 0
 }
 
 module.exports = vars;

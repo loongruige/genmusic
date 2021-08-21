@@ -2,7 +2,9 @@ module.exports = [{
   name: "help",
   code: `
 $title[GenMusic]  
-$description[Hi! I'm GenMusic, a free music bot with features like:
+$description[
+**Note! I'm currently updating commands. Please don't try using commands under the \`Economy\` category.**  
+Hi! I'm GenMusic, a free music bot with features like:
 > - Queue
 > - Loop
 > - Pause/Continue and such.
@@ -15,9 +17,10 @@ I am currently in **$serverCount** servers and have **$allMembersCount** members
   name: "commands",
   code: `
 $title[Command count : $commandsCount]
+$addfield[Economy;\`$getVar[prefix]work\`, \`$getVar[prefix]wallet\`, ~~\`$getVar[prefix]market\`~~, ~~\`$getVar[prefix]buy\`~~, \`$getVar[prefix]beg\`]
 $addfield[Other;\`$getVar[prefix]loop\`, \`$getVar[prefix]7/24\`, \`$getVar[prefix]freemium\`, \`$getvar[prefix]discord\`]
 $addfield[Infos;\`$getVar[prefix]help\`, **\`$getVar[prefix]commands\`**, \`$getVar[prefix]info\`, \`$getVar[prefix]queue\`, \`$getVar[prefix]np\` ]
-$addfield[Start/stop;\`$getVar[prefix]play\`, \`$getVar[prefix]stop\`, \`$getVar[prefix]pause\`, \`$getVar[prefix]resume\`]
+$addfield[Start/stop;\`$getVar[prefix]play\`, \`$getVar[prefix]skip\`, \`$getVar[prefix]pause\`, \`$getVar[prefix]resume\`]
   
 `
 },
@@ -53,18 +56,25 @@ $addTimestamp
   name: "play",
   code: `
 $if[$message==]
-Did you mean:
-\`>stop / >pause / >join\`?
+You need an argument to run this command with.
 $elseif[$voiceID==]
 You aren't in a voice channel.
 $endelseif
 $elseif[$voiceID[$clientid]==]
-$playSong[$message;7200m;yes;no;:x: Couldn't play song. Try again later.]
+$title[Searching...]
+$description[Added **$songinfo[title;$sub[$queuelength;1]]** to the queue!]
+$footer[+50🪙 GenBits]
+$setglobaluservar[plays;$sum[1;$getglobaluservar[plays]]]
+$let[$playSong[$message;7200m;yes;no;:x: Couldn't play song. Try again later.]]
 $joinVC[$voiceID]
 $changeNickname[$clientID;GenMusic | 🎶]
 $endelseif
 $elseif[$voiceID[$clientid]==$voiceid]
-$playSong[$message;7200m;yes;no;:x: Couldn't play song. Try again later.]
+$title[Searching...]
+$description[Added **$songinfo[title;$sub[$queuelength;1]]** to the queue!]
+$footer[+50🪙 GenBits]
+$setglobaluservar[plays;$sum[1;$getglobaluservar[plays]]]
+$let[$playSong[$message;7200m;yes;no;:x: Couldn't play song. Try again later.]]
 $joinVC[$voiceID]
 $changeNickname[$clientID;GenMusic | 🎶]
 $endelseif
@@ -186,10 +196,90 @@ $onlyForIds[553287196875161631;no perm]
 {
   name: "np",
   code: `
-$sub[100;$round[$multi[$divide[$splitText[1];$splitText[4]];100]]]% complete
-$image
+
+$description[
+**Now playing:** $songInfo[title]
+
+$sub[100;$round[$multi[$divide[$splitText[1];$splitText[4]];100]]]% complete:]
+$image[$replaceText[https://raw.githubusercontent.com/windowsModern/genmusic/master/progressbar/progress-overall-value.png;value;$sub[100;$round[$multi[$divide[$splitText[1];$splitText[4]];100]]]]
 
 $textSplit[$songInfo[duration_left] $songInfo[duration]; ]
 
+`
+},
+{
+  name: "skip",
+  code: `
+$if[$voiceID==]
+You're not in a voice channel
+$elseif[$voiceID!=$voiceID[$clientID]]
+We are not in the same voice channel.
+$endelseif
+$elseif[$queueLength==0]
+Queue is empty.
+$endelseif
+$else
+$skipSong
+Skipped!
+$endif 
+`
+},
+{
+name:"queue",
+code:`
+$if[$voiceID[$clientID]==]
+I am not in a voice channel.
+$elseif[$queuelength==0]
+Queue is empty.
+$endelseif
+$elseif[$queuelength<5]
+$description[$queue[1;5]]
+$endelseif
+$else
+$apiMessage[$channelId;
+;{description:$queue[1;5]};{actionRow:Next page,2,1,click};$messageID:true;no]
+$endif
+`
+},
+{
+  name: "724",
+  code: `
+$title[7/24 feature]
+$description[7/24 is currently buggy and I'm trying to fix it ASAP. 
+> "
+> *7/24 is a feature used to have the bot be always on the channel*
+> "
+]`
+},
+{
+  name: "freemium",
+  code: `
+$addfield["'Free' you said, right?";Yep, this bot is **completely free**, yet the Premium subscription gives you some perks like:
+- Having gold color in every embed
+- Getting early updates
+- Having a special role in our discord server ||you, user|| and much more.
+So basically, you would support us; ||us, Winlep|| not the bot ||bot, GenMusic||]
+$addfield["Freemium";
+> "
+> *a business model, especially on the internet, whereby basic services are provided free of charge while more advanced features must be paid for.*
+> " - Oxford Languages
+
+> "
+> *The business model has been in use for software since the 1980s. This is often in a time-limited or feature-limited version to promote a paid-for full version.*
+> " - Wikipedia]`
+},
+{
+  type: "musicStartCommand",
+  channel: "$channelID",
+  code: `
+$title[GenMusic playing!]
+$description[Playing **$songInfo[title]**!]
+`
+},
+{
+  name: "discord",
+  code: `
+$description[Join our discord server [here](https://discord.gg/qv7ywh7kKD)]  
+  
 `
 }]

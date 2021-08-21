@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aoi.js": "^4.4.4",
+    "aoi.js": "^4.5.0-dev.f472b38.1628942531",
+    "discord-buttons": "^4.0.0",
     "http": "0.0.1-security",
     "opusscript": "0.0.8"
   },
