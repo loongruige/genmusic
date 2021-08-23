@@ -4,13 +4,17 @@ const server = http.createServer((req, res) => {
 });
 server.listen(3000);
 
+
 const aoijs = require("aoi.js")
 const bot = new aoijs.Bot({
 token: process.env["Token"],
 prefix: "$getVar[prefix]",
 })
-
+// windows is cool
 const vars = require("./variables.gen")
+
+bot.onGuildJoin()
+bot.onGuildLeave()
 
 bot.onMessage()
 bot.loadCommands("./commands/")
@@ -34,5 +38,5 @@ Queue#COLON#
 $description[$queue[6;10]]
 `
 })
-
+// nirlep and windows are two really nice and amazing guys
 bot.variables(vars)

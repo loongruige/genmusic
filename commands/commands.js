@@ -46,7 +46,7 @@ $addField[General;
 
 \`🚦\` Ram Usage: $ram MB/$replaceText[$abbreviate[$maxRam];K; GB;-1]
 
-\`👑\` - Windows & Nirlep]
+\`👑\` - 1nce ||Nirlep|| & 2wice]
 $thumbnail[$userAvatar[$clientid]]
 $footer[$userTag[$clientID];$userAvatar[$clientID]]
 $addTimestamp
